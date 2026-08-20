@@ -5,49 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Convert hourly pay to daily, weekly, monthly and yearly salary instantly with this simple salary calculator.">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#7c3aed">
+  <meta name="theme-color" content="#5b5cf6">
   <title>Salary Calculator – Hourly to Yearly Pay</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="page-shell">
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Salary Calculator home"><span class="brand-icon" aria-hidden="true">💰</span><span>Salary Calculator</span></a>
-      <a class="header-link" href="#how-it-works">How it works</a>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Salary Calculator home">
+        <span class="brand-icon" aria-hidden="true">🧮</span>
+        <span class="brand-copy">
+          <strong>Salary Calculator</strong>
+          <small>Hourly to Yearly Pay</small>
+        </span>
+      </a>
+      <span class="free-badge">⭐ 100% Free</span>
     </header>
-    <main id="top" class="app-container">
-      <section class="hero" aria-labelledby="page-title"><div class="hero-copy"><p class="eyebrow">Hourly → Yearly Pay</p><h1 id="page-title">See your salary instantly</h1><p class="hero-text">Enter your hourly pay and work schedule. Get daily, weekly, monthly and yearly estimates.</p></div><div class="hero-badge" aria-hidden="true"><span>⚡</span><strong>Fast & simple</strong></div></section>
-      <aside class="ad-slot ad-slot-top" aria-label="Advertisement area"><span>Advertisement</span></aside>
+
+    <main class="app-container">
+      <aside class="ad-slot ad-slot-top" aria-label="Advertisement area">
+        <span class="ad-mark">AD</span>
+        <span>AdSense Banner (728x90)</span>
+      </aside>
+
       <section class="calculator-layout" aria-label="Salary calculator">
         <form id="salary-form" class="calculator-card" novalidate>
-          <div class="section-heading"><div><p class="section-eyebrow">Your details</p><h2>Calculate pay</h2></div><span class="section-icon" aria-hidden="true">🧮</span></div>
+          <div class="panel-title"><span aria-hidden="true">👤</span><h2>Your Input</h2></div>
+
           <div class="form-grid">
-            <div class="field field-wide"><label for="hourly-pay">Hourly pay</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input id="hourly-pay" name="hourlyPay" type="number" min="0" step="0.01" inputmode="decimal" value="25" required></div><p class="field-error" id="hourly-pay-error" role="alert"></p></div>
-            <div class="field"><label for="hours-week">Hours / week</label><input id="hours-week" name="hoursWeek" type="number" min="1" max="168" step="0.5" inputmode="decimal" value="40" required><p class="field-error" id="hours-week-error" role="alert"></p></div>
-            <div class="field"><label for="weeks-year">Weeks / year</label><input id="weeks-year" name="weeksYear" type="number" min="1" max="52" step="1" inputmode="numeric" value="52" required><p class="field-error" id="weeks-year-error" role="alert"></p></div>
+            <div class="field field-wide">
+              <label for="hourly-pay"><span aria-hidden="true">💲</span> Hourly Pay</label>
+              <div class="input-wrap suffix-wrap">
+                <input id="hourly-pay" name="hourlyPay" type="number" min="0" step="0.01" inputmode="decimal" value="25" required>
+                <span class="input-suffix" aria-hidden="true">$</span>
+              </div>
+              <p class="field-error" id="hourly-pay-error" role="alert"></p>
+            </div>
+
+            <div class="field field-wide">
+              <label for="hours-week"><span aria-hidden="true">🕒</span> Hours per Week</label>
+              <div class="input-wrap suffix-wrap">
+                <input id="hours-week" name="hoursWeek" type="number" min="1" max="168" step="0.5" inputmode="decimal" value="40" required>
+                <span class="input-suffix" aria-hidden="true">hrs</span>
+              </div>
+              <p class="field-error" id="hours-week-error" role="alert"></p>
+            </div>
+
+            <div class="field field-wide">
+              <label for="weeks-year"><span aria-hidden="true">🗓️</span> Weeks per Year</label>
+              <div class="input-wrap suffix-wrap">
+                <input id="weeks-year" name="weeksYear" type="number" min="1" max="52" step="1" inputmode="numeric" value="52" required>
+                <span class="input-suffix" aria-hidden="true">weeks</span>
+              </div>
+              <p class="field-error" id="weeks-year-error" role="alert"></p>
+            </div>
           </div>
-          <button class="btn-primary" type="submit">Calculate salary</button>
+
+          <button class="btn-primary" type="submit">🧮 Calculate</button>
+          <p class="input-tip">💡 Change any value and see results update instantly.</p>
         </form>
+
         <section id="results" class="results-card" aria-live="polite" aria-labelledby="results-title">
-          <div class="result-topline"><div><p class="section-eyebrow">Estimated pay</p><h2 id="results-title">Your salary</h2></div><span class="result-check" aria-hidden="true">✓</span></div>
-          <div class="result-highlight"><span class="result-label">Yearly</span><strong id="yearly-pay">$52,000</strong><span id="yearly-detail">40 hrs/week · 52 weeks/year</span></div>
-          <div class="result-grid"><article class="result-item"><span>Daily</span><strong id="daily-pay">$200</strong></article><article class="result-item"><span>Weekly</span><strong id="weekly-pay">$1,000</strong></article><article class="result-item"><span>Monthly</span><strong id="monthly-pay">$4,333.33</strong></article><article class="result-item"><span>Hourly</span><strong id="hourly-result">$25</strong></article></div>
-          <p class="result-note">Estimates are before taxes and deductions.</p>
+          <div class="panel-title"><span aria-hidden="true">📊</span><h2 id="results-title">Your Salary Breakdown</h2></div>
+
+          <div class="result-grid result-grid-top">
+            <article class="result-item daily"><span>🗓️ Daily Pay</span><strong id="daily-pay">$200</strong><small>per day</small></article>
+            <article class="result-item weekly"><span>🗓️ Weekly Pay</span><strong id="weekly-pay">$1,000</strong><small>per week</small></article>
+            <article class="result-item monthly"><span>🗓️ Monthly Pay</span><strong id="monthly-pay">$4,333.33</strong><small>per month</small></article>
+          </div>
+
+          <div class="result-highlight">
+            <span class="result-label">🗓️ Yearly Pay</span>
+            <strong id="yearly-pay">$52,000</strong>
+            <span id="yearly-detail">per year</span>
+          </div>
+
+          <article class="hourly-chip"><span>Hourly</span><strong id="hourly-result">$25</strong></article>
+          <p class="result-note">ℹ️ Assumes 5 working days per week.</p>
         </section>
       </section>
-      <aside class="ad-slot" aria-label="Advertisement area"><span>Advertisement</span></aside>
+
       <section id="how-it-works" class="info-section">
-        <div class="section-heading info-heading"><div><h2>How it works</h2></div></div>
+        <h2>⚙️ How It Works</h2>
         <div class="info-grid">
-          <article class="info-card"><span class="info-icon" aria-hidden="true">1️⃣</span><h3>Enter pay</h3></article>
-          <article class="info-card"><span class="info-icon" aria-hidden="true">2️⃣</span><h3>Add hours</h3></article>
-          <article class="info-card"><span class="info-icon" aria-hidden="true">3️⃣</span><h3>See salary</h3></article>
+          <article class="info-card"><span class="step-dot step-one">1</span><span>Enter your hourly pay</span><b>→</b></article>
+          <article class="info-card"><span class="step-dot step-two">2</span><span>Add hours & weeks</span><b>→</b></article>
+          <article class="info-card"><span class="step-dot step-three">3</span><span>See your salary</span></article>
         </div>
       </section>
-      <section class="faq-section" aria-labelledby="faq-title"><div class="section-heading info-heading"><div><p class="section-eyebrow">FAQ</p><h2 id="faq-title">Salary calculator questions</h2></div></div><div class="faq-list"><details><summary>How is yearly salary calculated?</summary><p>Hourly pay × hours per week × weeks per year.</p></details><details><summary>How is monthly salary estimated?</summary><p>The yearly estimate is divided by 12.</p></details><details><summary>Does this include taxes?</summary><p>No. Results are gross estimates before taxes, benefits or other deductions.</p></details></div></section>
-      <aside class="ad-slot" aria-label="Advertisement area"><span>Advertisement</span></aside>
+
+      <aside class="ad-slot" aria-label="Advertisement area">
+        <span class="ad-mark">AD</span>
+        <span>AdSense Banner (728x90)</span>
+      </aside>
+
+      <section class="faq-section" aria-labelledby="faq-title">
+        <div class="faq-heading"><span class="section-eyebrow">FAQ</span><h2 id="faq-title">Salary calculator questions</h2></div>
+        <div class="faq-list">
+          <details><summary>How is yearly salary calculated?</summary><p>Hourly pay × hours per week × weeks per year.</p></details>
+          <details><summary>How is monthly salary estimated?</summary><p>The yearly estimate is divided by 12.</p></details>
+          <details><summary>Does this include taxes?</summary><p>No. Results are gross estimates before taxes, benefits or other deductions.</p></details>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer"><p>Salary Calculator · Simple pay estimates</p></footer>
+
+    <footer class="site-footer"><p>🛡️ 100% Free &nbsp;•&nbsp; No signup &nbsp;•&nbsp; No data stored</p></footer>
   </div>
   <script src="app.js" defer></script>
 </body>
